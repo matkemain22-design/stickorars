@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 
 const shapes = ["Krug", "Kvadrat", "Pravougaonik", "Ovalna", "Po konturi (die-cut)"];
-const materials = ["Vinil sjajni", "Vinil mat", "Papir", "Providna folija"];
+const materials = ["Papir"];
 
 export function OrderForm() {
   const send = useServerFn(submitOrder);
