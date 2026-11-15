@@ -88,10 +88,8 @@ function Index() {
               <span key={u} className={`rounded-full border-2 border-ink px-5 py-2.5 font-semibold ${i % 3 === 0 ? "bg-primary" : "bg-card"}`}>{u}</span>
             ))}
           </div>
-          <div className="mt-10 grid gap-6 sm:grid-cols-3">
-            {[["Vinil", "Vodootporan, za spoljnu upotrebu"], ["Papir", "Idealno za etikete i pakovanja"], ["Providne", "Elegantan izgled na staklu"]].map(([t, d]) => (
-              <div key={t} className="rounded-xl bg-card p-6"><div className="font-display font-bold">{t}</div><p className="mt-1 text-sm text-muted-foreground">{d}</p></div>
-            ))}
+          <div className="mt-10 max-w-sm">
+            <div className="rounded-xl bg-card p-6"><div className="font-display font-bold">Papir</div><p className="mt-1 text-sm text-muted-foreground">Idealno za etikete i pakovanja</p></div>
           </div>
         </div>
       </section>
