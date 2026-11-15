@@ -111,13 +111,14 @@ export async function syncOrderToDrive(
 ): Promise<void> {
   const rootId = await ensureFolder("Stickora porudžbine");
   const date = (order.created_at ?? new Date().toISOString()).slice(0, 10);
-  const folderName = `${date} - ${order.full_name} - ${order.id.slice(0, 8)}`;
-  const orderFolderId = await createFolder(folderName, rootId);
+  const orderNumber = order.id.slice(0, 8).toUpperCase();
+  const orderFolderId = await createFolder(orderNumber, rootId);
 
   const info = [
     "STICKORA.RS — NOVA PORUDŽBINA",
     "================================",
-    `Broj porudžbine: ${order.id}`,
+    `Broj porudžbine: ${orderNumber}`,
+    `ID: ${order.id}`,
     `Datum: ${date}`,
     "",
     "KUPAC",
