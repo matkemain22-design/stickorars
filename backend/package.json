@@ -1,0 +1,12 @@
+{
+  "name": "stickora-orders-backend",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22.13.0" },
+  "scripts": {
+    "start": "node src/main.mjs",
+    "test": "node --test test/*.test.mjs",
+    "import": "node scripts/import-orders.mjs"
+  },
+  "dependencies": { "zod": "^3.25.76" }
+}
