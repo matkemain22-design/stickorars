@@ -11,7 +11,7 @@ const schema = z.object({
   width_cm: z.coerce.number().min(1).max(200),
   height_cm: z.coerce.number().min(1).max(200),
   quantity: z.coerce.number().int().min(1).max(100000),
-  material: z.string().trim().max(40),
+  material: z.literal("Papir"),
   design_description: z.string().trim().max(3000).optional().default(""),
   note: z.string().trim().max(2000).optional().default(""),
 });
@@ -37,6 +37,15 @@ export const submitOrder = createServerFn({ method: "POST" })
     return { ...data, design };
   })
   .handler(async ({ data }) => {
+    // Fail closed: external hosting must never fall back to Cloud storage.
+    if (process.env["ORDERS_BACKEND_URL"] || process.env["ORDERS_BACKEND_MODE"] === "independent") {
+      const { submitToIndependentBackend } = await import('./orders-backend.server');
+      const form = new FormData();
+      const { design, ...fields } = data;
+      for (const [key, value] of Object.entries(fields)) form.set(key, String(value));
+      if (design && data.order_type === 'upload') form.set('design', design, design.name);
+      return submitToIndependentBackend(form);
+    }
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     let design_path: string | null = null;
     if (data.order_type === "upload" && data.design) {

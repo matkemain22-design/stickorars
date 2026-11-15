@@ -1,5 +1,9 @@
 # Welcome to your Lovable project
 
+## Samostalno hostovanje Stickora.rs
+
+Nezavisan servis porudžbina, privatno čuvanje fajlova i direktno Google Drive povezivanje nalaze se u `backend/`. Docker postavljanje je u `deploy/`. Potpuno uputstvo, bezbedna podešavanja i prenos starih podataka: [SELF_HOSTING.md](./SELF_HOSTING.md).
+
 This project was built with [Lovable](https://lovable.dev).
 
 ## Build with Lovable

@@ -6,6 +6,10 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
+    "build:selfhost": "vite build --config vite.selfhost.config.ts",
+    "dev:selfhost": "vite --config vite.selfhost.config.ts",
+    "start:selfhost": "node .output/server/index.mjs",
+    "test:backend": "node --test backend/test/*.test.mjs",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
