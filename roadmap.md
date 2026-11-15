@@ -1,6 +1,6 @@
 # Roadmap
 
-- [ ] Povezati Google Drive nalog (connector) sa projektom
-- [ ] Napraviti Drive folder za porudžbine i upisivati svaku porudžbinu: dizajn fajl + formatirane podatke (ime, mejl, telefon, oblik, materijal, dimenzije, količina, opis/napomena)
-- [ ] Testirati porudžbinu kraj-na-kraj (red u bazi + fajl u Drive-u)
+- [x] Povezati Google Drive nalog (connector) sa projektom
+- [x] Drive folder "Stickora porudžbine": svaka porudžbina pravi podfolder sa dizajn fajlom + podaci-porudzbine.txt
+- [x] Testirano kraj-na-kraj (red u bazi + fajlovi u Drive-u), probna porudžbina obrisana
 - [ ] Kasnije: kad domen bude kupljen/verifikovan, uključiti mejl obaveštenja na stickorars@gmail.com
