@@ -28,3 +28,9 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Independent hosting
+- Keep the external orders service in `backend/` on Node 22 with SQLite and private files on one persistent volume; the site runtime must never import its filesystem or SQLite modules.
+- Proxy submissions through the same-origin server function with a server-only token; selecting independent mode must fail closed rather than fall back to Cloud.
+- Keep the default Lovable preview configuration unchanged; use the separate Node-targeted Vite config and auth-free start entry for self-hosting.
+- Persist Drive jobs and per-file IDs before acknowledging synchronization; retry through one worker with appProperties deduplication so restarts do not duplicate folders.
