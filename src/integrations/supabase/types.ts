@@ -14,7 +14,63 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      sticker_orders: {
+        Row: {
+          address: string | null
+          created_at: string
+          design_description: string | null
+          design_path: string | null
+          email: string
+          full_name: string
+          height_cm: number | null
+          id: string
+          material: string | null
+          note: string | null
+          order_type: string
+          phone: string | null
+          quantity: number
+          status: string
+          sticker_shape: string | null
+          width_cm: number | null
+        }
+        Insert: {
+          address?: string | null
+          created_at?: string
+          design_description?: string | null
+          design_path?: string | null
+          email: string
+          full_name: string
+          height_cm?: number | null
+          id?: string
+          material?: string | null
+          note?: string | null
+          order_type: string
+          phone?: string | null
+          quantity?: number
+          status?: string
+          sticker_shape?: string | null
+          width_cm?: number | null
+        }
+        Update: {
+          address?: string | null
+          created_at?: string
+          design_description?: string | null
+          design_path?: string | null
+          email?: string
+          full_name?: string
+          height_cm?: number | null
+          id?: string
+          material?: string | null
+          note?: string | null
+          order_type?: string
+          phone?: string | null
+          quantity?: number
+          status?: string
+          sticker_shape?: string | null
+          width_cm?: number | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
