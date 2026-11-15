@@ -67,14 +67,11 @@ async function uploadFile(
 ): Promise<string> {
   const boundary = `stickora_${crypto.randomUUID().replace(/-/g, "")}`;
   const metadata = JSON.stringify({ name, parents: [parentId] });
-  const body = new FormData();
-  // multipart/related via manual assembly for correct part headers
   const metaPart = `--${boundary}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n${metadata}\r\n`;
   const mediaBlob = typeof content === "string" ? new Blob([content], { type: mimeType }) : content;
   const head = `--${boundary}\r\nContent-Type: ${mimeType}\r\n\r\n`;
   const tail = `\r\n--${boundary}--`;
   const payload = new Blob([metaPart, head, mediaBlob, tail]);
-  void body;
   const res = await fetch(
     `${GATEWAY}/upload/drive/v3/files?uploadType=multipart&fields=id,name,webViewLink`,
     {
