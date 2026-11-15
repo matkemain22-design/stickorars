@@ -48,12 +48,23 @@ export const submitOrder = createServerFn({ method: "POST" })
       if (error) throw new Error("Otpremanje fajla nije uspelo.");
     }
     const { design, ...rest } = data;
-    void design;
     const { data: row, error } = await supabaseAdmin
       .from("sticker_orders")
       .insert({ ...rest, design_path, phone: rest.phone || null, address: rest.address || null })
-      .select("id")
+      .select("id, created_at")
       .single();
     if (error) throw new Error("Porudžbina nije sačuvana. Pokušajte ponovo.");
+
+    // Sync to Google Drive (best-effort: order stays saved even if Drive fails)
+    try {
+      const { syncOrderToDrive } = await import("./drive.server");
+      await syncOrderToDrive(
+        { ...rest, id: row.id as string, created_at: row.created_at as string },
+        design ? { name: design.name, type: design.type, buffer: await design.arrayBuffer() } : null
+      );
+    } catch (driveError) {
+      console.error("Drive sync nije uspeo za porudžbinu", row.id, driveError);
+    }
+
     return { id: row.id as string };
   });
