@@ -1,7 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { OrderForm } from "@/components/OrderForm";
-import logo from "@/assets/stickora-logo.png.asset.json";
-import logoWhite from "@/assets/stickora-logo-white.png.asset.json";
 import hero from "@/assets/hero-stickers.jpg";
 
 export const Route = createFileRoute("/")({
@@ -31,7 +29,7 @@ function Index() {
     <div className="min-h-screen">
       <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
-          <a href="#"><img src={logo.url} alt="Stickora.rs" className="h-9 w-auto" /></a>
+          <a href="#"><img src="/media/stickora-logo.png" alt="Stickora.rs" className="h-9 w-auto" /></a>
           <nav className="hidden gap-8 text-sm font-semibold md:flex">
             <a href="#kako" className="hover:text-muted-foreground">Kako radi</a>
             <a href="#primena" className="hover:text-muted-foreground">Primena</a>
@@ -102,7 +100,7 @@ function Index() {
 
       <footer className="bg-ink text-ink-foreground">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 py-10 md:flex-row">
-          <img src={logoWhite.url} alt="Stickora.rs" className="h-10 w-auto" />
+          <img src="/media/stickora-logo-white.png" alt="Stickora.rs" className="h-10 w-auto" />
           <p className="text-sm text-ink-foreground/60">© {new Date().getFullYear()} Stickora.rs — Štampa nalepnica po želji</p>
         </div>
       </footer>
