@@ -117,7 +117,8 @@ export async function syncOrderToDrive(
   const info = [
     "STICKORA.RS — NOVA PORUDŽBINA",
     "================================",
-    `Broj porudžbine: ${order.id}`,
+    `Broj porudžbine: ${orderNumber}`,
+    `ID: ${order.id}`,
     `Datum: ${date}`,
     "",
     "KUPAC",
